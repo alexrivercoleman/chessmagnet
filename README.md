@@ -67,12 +67,17 @@ tools\arduino-cli.exe monitor -p COM5 -c baudrate=115200
 
 ### Win sound (optional)
 
-Convert your clip to a 16-bit PCM WAV (16 kHz mono is plenty), put it in
-`data\win.wav` (ignored by git), then flash it once:
+Convert your clip (any format ffmpeg reads, under a minute long) into
+`data\win.wav`, which git ignores. Then flash it once; normal firmware uploads
+leave it alone:
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File scripts\make_win_sound.ps1 -In "$HOME\Downloads\clip.mp3"
 powershell -ExecutionPolicy Bypass -File scripts\flash_win_sound.ps1 -Wav data\win.wav -Port COM5
 ```
+
+The conversion makes it 16 kHz mono 16-bit, raises the peak to −1 dBFS,
+adds a 0.3 s fade-out and strips metadata.
 
 Without it, a short built-in fanfare plays on checkmate.
 
