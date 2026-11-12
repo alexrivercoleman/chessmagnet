@@ -1,0 +1,8 @@
+# Flash layout for the 16 MB chip (picked up automatically by the ESP32 core).
+# Name,   Type, SubType,  Offset,   Size
+nvs,      data, nvs,      0x9000,   0x6000,
+phy_init, data, phy,      0xF000,   0x1000,
+factory,  app,  factory,  0x10000,  0x400000,
+# Optional win sound: a WAV file written raw into this partition
+# (scripts/flash_win_sound.ps1). Left erased, the built-in fanfare plays.
+audio,    data, 0x40,     0x410000, 0x200000,

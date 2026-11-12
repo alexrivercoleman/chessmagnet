@@ -1,0 +1,12 @@
+Source: https://github.com/Disservin/chess-library
+Commit: 430266434aeb42f19bb5baa84597d671824889ff
+File: include/chess.hpp
+License: MIT (see LICENSE)
+
+Local patch (chessMagnet), active only when CHESS_SLIDER_TABLES_ON_HEAP is
+defined (chess_lib.h defines it for every build):
+  The rook/bishop "magic bitboard" attack tables (RookAttacks, 800 KB, and
+  BishopAttacks, 41 KB) are allocated with `new` in attacks::initAttacks()
+  instead of being static arrays. Static arrays must fit in the ESP32-S3's
+  512 KB internal RAM, which they can't; heap allocations above 4 KB go to
+  the 8 MB PSRAM automatically. Search chess.hpp for "chessMagnet patch".

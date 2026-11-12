@@ -1,0 +1,12 @@
+# Build output and downloaded tools (re-created by scripts/setup.ps1)
+/build/
+/tools/
+/.arduino/
+
+# Your win sound: personal copy, never committed
+/data/
+*.mp3
+*.wav
+
+# The ESP32 core also exports build artifacts next to the sketch
+/firmware/chessMagnet/build/
